@@ -1,0 +1,16 @@
+<script>
+    //Rock Paper Scissors Game
+    "use strict";
+
+    // Generate random hand for computer
+    function computerPlay() {
+        // Generate random number to represent hand
+        let number = Math.floor(Math.random() * Math.floor(3));
+        
+        // Generate computer hand  based on the number
+        let computerHand = (number === 0) ? "Rock" : 
+            (number === 1) ? "Paper": "Scissors";
+        
+        return computerHand;
+    }
+</script>
