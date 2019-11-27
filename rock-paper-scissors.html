@@ -4,13 +4,36 @@
 
     // Generate random hand for computer
     function computerPlay() {
+
         // Generate random number to represent hand
         let number = Math.floor(Math.random() * Math.floor(3));
         
-        // Generate computer hand  based on the number
-        let computerHand = (number === 0) ? "Rock" : 
+        // Generate computer selection based on the number
+        let computerSelection = (number === 0) ? "Rock" : 
             (number === 1) ? "Paper": "Scissors";
         
-        return computerHand;
+        return computerSelection;
+    }
+
+    // Plays a round of rock paper scissors game
+    function playRound(playerSelection, computerSelection) {
+
+        // Store selection in lower case
+        let playerHand = playerSelection.toLowerCase();
+        let computerHand = computerSelection.toLowerCase();
+
+        // You lose by default, like we do in life
+        let result = `You lose! ${computerSelection} beat ${playerSelection}`;
+
+        // Decide the result of the game
+        if ((playerHand === "rock" && computerHand === "scissors")
+            || (playerHand === "paper" && computerHand === "rock")
+            || (playerHand === "scissors" && computerHand === "paper")) {
+            result = `You win! ${playerSelection} beat ${computerSelection}`
+        } else if (playerHand === computerHand) {
+            result = "It's a draw!";
+        }
+
+        return result;        
     }
 </script>
