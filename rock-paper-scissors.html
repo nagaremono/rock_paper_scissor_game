@@ -4,80 +4,19 @@
     <head>
         <meta charset="utf-8">
         <title>Rock Paper Scissors Game</title>
+        <link src="style.css" rel="stylesheet">
     </head>
     <body>
-        <script>
-            //Rock Paper Scissors Game
-            "use strict";
-
-            // Generate random hand for computer
-            function computerPlay() {
-
-                // Generate random number to represent hand
-                let number = Math.floor(Math.random() * Math.floor(3));
-                
-                // Generate computer selection based on the number
-                let computerSelection = (number === 0) ? "Rock" : 
-                    (number === 1) ? "Paper": "Scissors";
-                
-                return computerSelection;
-            }
-
-            // Plays a round of rock paper scissors game
-            function playRound(playerSelection, computerSelection) {
-
-                // Store selection in lower case
-                let playerHand = playerSelection.toLowerCase();
-                let computerHand = computerSelection.toLowerCase();
-
-                // You lose by default, like we do in life
-                let result = `You lose! ${computerSelection} beat ${playerSelection}`;
-
-                // Decide the result of the game
-                if ((playerHand === "rock" && computerHand === "scissors")
-                    || (playerHand === "paper" && computerHand === "rock")
-                    || (playerHand === "scissors" && computerHand === "paper")) {
-                    result = `You win! ${playerSelection} beat ${computerSelection}`
-                } else if (playerHand === computerHand) {
-                    result = "It's a draw!";
-                }
-
-                return result;        
-            }
-
-            // Run a five round game of rock paper scissors with a winner in the end
-            function game() {
-
-                // Keeps track of player and computer score
-                let playerScore = 0, computerScore = 0;
-
-                // Run the game five times
-                for (let i = 0; i < 5; i++) {
-                    let playerSelection = prompt("Rock, Paper, or Scissors?", "Rock");
-                    let computerSelection = computerPlay();
-
-                    let result = playRound(playerSelection, computerSelection)
-
-                    if (result === `You win! ${playerSelection} beat ${computerSelection}`) {
-                        playerScore += 1;
-                    } else if (result === `You lose! ${computerSelection} beat ${playerSelection}`) {
-                        computerScore += 1;
-                    }
-
-                    // Display the winner and the score for every round
-                    console.log(result);
-                    console.log(`Your Score = ${playerScore}, Computer Score = ${computerScore}`);
-                }
-
-                // Display overall score and winner
-                if (playerScore > computerScore) {
-                    console.log("Congratulations! You won best out of five!")
-                } else if (playerScore < computerScore) {
-                    console.log("Too bad! The computer bet you!")
-                } else {
-                    console.log("Looks like you're an even match!")
-                }
-            }
-        </script>
+        <section class="hand">
+            <button id="Rock" class="player">Rock</button>
+            <button id="Paper" class="player">Paper</button>
+            <button id="Scissors" class="player">Scissors</button>
+        </section>
+        <div class="score"><p>Your Score = 0 Computer Score = 0</p></div>
+        <div class="result"><p>First to Five Wins!</p></div>
+        <div class="victor">
+            <p>Winner</p>
+        </div>
+        <script src="rockpaperscissors.js"></script>
     </body>
 </html>
