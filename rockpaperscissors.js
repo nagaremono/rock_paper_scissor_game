@@ -10,6 +10,9 @@ hands.forEach(hand => {
     });
 });
 
+const resetbutton = document.querySelector('#reset')
+resetbutton.addEventListener('click', reset)
+
 // Generate random hand for computer
 function computerPlay() {
     // Generate random number to represent hand
@@ -60,11 +63,8 @@ function check() {
         }
 
         const victorBox = document.querySelector('.victor')
-        const victorious = document.createElement('p')
-
-        victorious.textContent = victor
-
-        victorBox.appendChild(victorious)
+        
+        victorBox.innerHTML = `<p>${victor}</p>`
     }
 }
 
@@ -73,15 +73,20 @@ function display(result) {
     const resultBox = document.querySelector('.result');
     const scoreBox = document.querySelector('.score');
 
-    const roundResult = document.createElement('p');
-    const score = document.createElement('p');
+    resultBox.innerHTML = `<p>${result}</p>`
 
-    roundResult.textContent = result
-    score.textContent = `Your Score = ${playerScore}, Computer Score = ${computerScore}`
+    scoreBox.innerHTML = `<p>Your Score = ${playerScore}, Computer Score = ${computerScore}</p>`
+}
 
-    resultBox.removeChild(resultBox.firstChild);
-    resultBox.appendChild(roundResult);
+function reset() {
+    const resultBox = document.querySelector('.result');
+    const scoreBox = document.querySelector('.score');
+    const victor = document.querySelector('.victor');
 
-    scoreBox.removeChild(scoreBox.firstChild);
-    scoreBox.appendChild(score); 
+    playerScore = 0
+    computerScore = 0
+
+    resultBox.innerHTML = '<p>First to Five Wins!</p>'
+    scoreBox.innerHTML = `<p>Your Score = ${playerScore}, Computer Score = ${computerScore}</p>`
+    victor.innerHTML = '<p>Winner</p>'
 }
